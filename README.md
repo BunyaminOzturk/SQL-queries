@@ -1,4 +1,4 @@
-## PostgreSQL-hw4
+## SQL-Queries
 #### 1. film tablosunda bulunan replacement_cost sütununda bulunan birbirinden farklı değerleri sıralayınız.
 ```sql
 SELECT DISTINCT(replacement_cost) FROM film;
@@ -21,4 +21,26 @@ WHERE LENGTH(country) = 5;
 ```sql
 SELECT COUNT(*) FROM city
 WHERE city ILIKE '%R';
+```
+#### 6. film tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en uzun (length) 5 filmi sıralayınız.
+```sql
+select * from film
+where title like '%n'
+order by length desc
+limit 5;
+```
+#### 7. film tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en kısa (length) ikinci(6,7,8,9,10) 5 filmi(6,7,8,9,10) sıralayınız
+```sql
+select * from film
+where title like '%n'
+order by length asc
+offset 5
+limit 5
+```
+#### 8. customer tablosunda bulunan last_name sütununa göre azalan yapılan sıralamada store_id 1 olmak koşuluyla ilk 4 veriyi sıralayınız.
+```sql
+select * from customer
+where store_id = 1
+order by last_name desc
+limit 4
 ```
