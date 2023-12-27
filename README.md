@@ -63,3 +63,26 @@ where rental_rate = 0.99
 select count(distinct(replacement_cost)) from film
 where length > 150
 ```
+#### 13. film tablosunda bulunan filmleri rating değerlerine göre gruplayınız.
+```sql
+select rating from film
+group by rating;
+```
+#### 14. film tablosunda bulunan filmleri replacement_cost sütununa göre grupladığımızda film sayısı 50 den fazla olan replacement_cost değerini ve karşılık gelen film sayısını sıralayınız.
+```sql
+select replacement_cost, count(*) from film
+group by replacement_cost
+having count(*) > 50;
+```
+#### 15.  customer tablosunda bulunan store_id değerlerine karşılık gelen müşteri sayılarını nelerdir? 
+```sql
+select store_id, count(*) from customer
+group by store_id
+```
+#### 16. city tablosunda bulunan şehir verilerini country_id sütununa göre gruplandırdıktan sonra en fazla şehir sayısı barındıran country_id bilgisini ve şehir sayısını paylaşınız.
+```sql
+select country_id, count(*) from city
+group by country_id
+order by count(*) desc
+limit 1;
+```
