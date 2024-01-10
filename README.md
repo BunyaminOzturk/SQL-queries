@@ -86,3 +86,17 @@ group by country_id
 order by count(*) desc
 limit 1;
 ```
+## CREATE UPDATE DELETE
+#### 17. test veritabanınızda employee isimli sütun bilgileri id(INTEGER), name VARCHAR(50), birthday DATE, email VARCHAR(100) olan bir tablo oluşturalım.
+```sql
+create table employee(
+id serial primary key,
+name varchar(50) not null,
+birthday date,
+email varchar(100)
+);
+```
+#### 18. Oluşturduğumuz employee tablosuna 'Mockaroo' servisini kullanarak 50 adet veri ekleyelim.
+https://www.mockaroo.com
+![github](sql_create.jpg)
+
