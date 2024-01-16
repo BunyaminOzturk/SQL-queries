@@ -1,4 +1,5 @@
 ## SQL-Queries
+https://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip
 #### 1. film tablosunda bulunan replacement_cost sütununda bulunan birbirinden farklı değerleri sıralayınız.
 ```sql
 SELECT DISTINCT(replacement_cost) FROM film;
@@ -198,5 +199,27 @@ returning *;
 delete from employee
 where length(name) <= 4
 returning *;
+```
+## INNER JOIN
+#### 21. city tablosu ile country tablosunda bulunan şehir (city) ve ülke (country) isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
+```sql
+select city, country 
+from city
+inner join country
+on city.country_id = country.country_id;
+```
+#### 22. customer tablosu ile payment tablosunda bulunan payment_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
+```sql
+select payment_id, first_name, last_name
+from customer
+inner join payment
+on customer.customer_id = payment.customer_id;
+```
+#### 23. customer tablosu ile rental tablosunda bulunan rental_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
+```sql
+select rental_id, first_name, last_name
+from customer
+inner join rental
+on customer.customer_id = rental.customer_id;
 ```
 
