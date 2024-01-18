@@ -200,7 +200,7 @@ delete from employee
 where length(name) <= 4
 returning *;
 ```
-## INNER JOIN
+### INNER JOIN
 #### 21. city tablosu ile country tablosunda bulunan şehir (city) ve ülke (country) isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
 ```sql
 select city, country 
@@ -222,6 +222,7 @@ from customer
 inner join rental
 on customer.customer_id = rental.customer_id;
 ```
+### LEFT, RIGHT, FULL JOIN
 #### 24. city tablosu ile country tablosunda bulunan şehir (city) ve ülke (country) isimlerini birlikte görebileceğimiz LEFT JOIN sorgusunu yazınız.
 ```sql
 select city, country from city
@@ -239,4 +240,39 @@ on payment.customer_id = customer.customer_id;
 select rental_id, first_name, last_name from customer
 full join rental
 on rental.customer_id = customer.customer_id;
+```
+### UNION, INTERSECT, EXCEPT
+#### 27. actor ve customer tablolarında bulunan first_name sütunları için tüm verileri sıralayalım.
+```sql
+(select first_name from actor)
+union
+(select first_name from customer);
+```
+#### 28. actor ve customer tablolarında bulunan first_name sütunları için kesişen verileri sıralayalım.
+```sql
+(select first_name from actor)
+intersect
+(select first_name from customer);
+```
+#### 29. actor ve customer tablolarında bulunan first_name sütunları için ilk tabloda bulunan ancak ikinci tabloda bulunmayan verileri sıralayalım.
+```sql
+(select first_name from actor)
+except
+(select first_name from customer);
+```
+#### 30. İlk 3 sorguyu tekrar eden veriler için de yapalım.
+```sql
+(select first_name from actor)
+union all
+(select first_name from customer);
+```
+```sql
+(select first_name from actor)
+intersect all
+(select first_name from customer);
+```
+```sql
+(select first_name from actor)
+except all
+(select first_name from customer);
 ```
