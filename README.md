@@ -276,3 +276,39 @@ intersect all
 except all
 (select first_name from customer);
 ```
+### Subqueries
+#### 31. film tablosunda film uzunluğu length sütununda gösterilmektedir. Uzunluğu ortalama film uzunluğundan fazla kaç tane film vardır?
+```sql
+select count(*) from film
+where length > 
+(select avg(length) from film);
+```
+#### 32. film tablosunda en yüksek rental_rate değerine sahip kaç tane film vardır?
+```sql
+select count(*) from film 
+where rental_rate = 
+(select max(rental_rate) from film);
+```
+#### 33. film tablosunda en düşük rental_rate ve en düşük replacement_cost değerlerine sahip filmleri sıralayınız.
+```sql
+select * from film
+where 
+(rental_rate =
+( select min(rental_rate) from film)
+) 
+and 
+(replacement_cost =
+( select min(replacement_cost) from film)
+);
+```
+#### 34. payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
+```sql
+select  customer.customer_id
+	,customer.first_name
+	,customer.last_name
+	,count(payment.customer_id) from payment
+inner join customer
+on customer.customer_id = payment.customer_id
+group by customer.customer_id
+order by count(payment.customer_id) desc
+```
